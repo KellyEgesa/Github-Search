@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../user';
 import { UserService } from '../user-service/user.service';
 
 @Component({
@@ -7,10 +8,11 @@ import { UserService } from '../user-service/user.service';
   styleUrls: ['./display-profile.component.css'],
 })
 export class DisplayProfileComponent implements OnInit {
+  user;
   constructor(private userservice: UserService) {}
 
   ngOnInit(): void {
     this.userservice.getGithubUser();
-    console.log(this.userservice);
+    this.user = this.userservice.user;
   }
 }

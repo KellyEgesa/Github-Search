@@ -7,9 +7,11 @@ import { User } from '../user';
   providedIn: 'root',
 })
 export class UserService {
-  user;
+  user: User;
 
-  constructor(public http: HttpClient) {}
+  constructor(public http: HttpClient) {
+    this.user = new User(0, '', '', '', 0, 0, new Date());
+  }
 
   getGithubUser() {
     interface ApiResponse {
@@ -20,6 +22,7 @@ export class UserService {
       followers: number;
       following: number;
       created_at: Date;
+      headers: any;
     }
     const promise = new Promise((resolve, reject) => {
       this.http
@@ -31,17 +34,13 @@ export class UserService {
         .toPromise()
         .then(
           (response) => {
-            this.user = new User(
-              response.id,
-              response.login,
-              response.avatar_url,
-              response.repos_url,
-              response.followers,
-              response.following,
-              response.created_at
-            );
-
-            console.log(this.user);
+            this.user.id = response.id;
+            this.user.name = response.login;
+            this.user.photo = response.avatar_url;
+            this.user.repos = response.repos_url;
+            this.user.following = response.following;
+            this.user.followers = response.followers;
+            this.user.dateCreated = response.created_at;
             resolve();
           },
           (err) => {
