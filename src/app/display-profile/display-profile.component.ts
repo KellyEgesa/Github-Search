@@ -8,7 +8,7 @@ import { UserService } from '../user-service/user.service';
   styleUrls: ['./display-profile.component.css'],
 })
 export class DisplayProfileComponent implements OnInit {
-  user;
+  user: User;
   constructor(private userservice: UserService) {}
 
   ngOnInit(): void {
