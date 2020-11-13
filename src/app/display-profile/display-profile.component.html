@@ -11,32 +11,30 @@
       <div class="col">
         <h3>{{ user.name }}</h3>
 
-        <table class="table table-striped">
+        <table class="table table-striped table-bordered">
           <tbody>
             <tr>
+              <td>Bio:</td>
+              <td>{{ user.bio }}</td>
+            </tr>
+            <tr>
+              <td>Repositories:</td>
               <td>{{ user.reposNumber }}</td>
-              <td>Otto</td>
-              <td>@mdo</td>
             </tr>
             <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
+              <td>Following:</td>
+              <td>{{ user.following }}</td>
             </tr>
             <tr>
-              <th scope="row">3</th>
-              <td>Larry</td>
-              <td>the Bird</td>
-              <td>@twitter</td>
+              <td>Followers:</td>
+              <td>{{ user.followers }}</td>
+            </tr>
+            <tr>
+              <td>Date created:</td>
+              <td>{{ user.dateCreated }}</td>
             </tr>
           </tbody>
         </table>
-
-        {{ user.repos }}
-        {{ user.followers }}
-        {{ user.following }}
-        {{ user.dateCreated }}
       </div>
     </div>
   </div>
