@@ -8,6 +8,7 @@ import { User } from '../user';
 })
 export class UserService {
   user: User;
+  repos;
 
   constructor(public http: HttpClient) {
     this.user = new User(0, '', '', '', '', 0, 0, 0, new Date());
@@ -46,6 +47,29 @@ export class UserService {
             this.user.reposNumber = response.public_repos;
             this.user.dateCreated = response.created_at;
 
+            resolve();
+          },
+          (err) => {
+            // this.user = 'error';
+            reject(err);
+          }
+        );
+    });
+    return promise;
+  }
+
+  getUserRepo(url) {
+    interface ApiResponse {
+      null;
+    }
+    const promise = new Promise((resolve, reject) => {
+      this.http
+        .get<ApiResponse>(url)
+        .toPromise()
+        .then(
+          (response) => {
+            this.repos = response;
+            console.log(this.repos);
             resolve();
           },
           (err) => {
