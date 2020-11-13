@@ -4,6 +4,7 @@ export class User {
     public name: string,
     public photo: string,
     public repos: string,
+    public reposNumber: number,
     public followers: number,
     public following: number,
     public dateCreated: Date

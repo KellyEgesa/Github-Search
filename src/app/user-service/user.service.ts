@@ -10,7 +10,7 @@ export class UserService {
   user: User;
 
   constructor(public http: HttpClient) {
-    this.user = new User(0, '', '', '', 0, 0, new Date());
+    this.user = new User(0, '', '', '', 0, 0, 0, new Date());
   }
 
   getGithubUser() {
@@ -19,6 +19,7 @@ export class UserService {
       login: string;
       avatar_url: string;
       repos_url: string;
+      public_repos: number;
       followers: number;
       following: number;
       created_at: Date;
@@ -40,6 +41,7 @@ export class UserService {
             this.user.repos = response.repos_url;
             this.user.following = response.following;
             this.user.followers = response.followers;
+            this.user.reposNumber = response.public_repos;
             this.user.dateCreated = response.created_at;
             resolve();
           },

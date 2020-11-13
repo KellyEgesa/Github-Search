@@ -1,6 +1,6 @@
 <div class="container-fluid">
-  <div class="card my-auto" id="userCard">
-    <div class="row">
+  <div class="card mx-auto" id="userCard">
+    <div class="row p-2">
       <div class="col">
         <img
           src="{{ user.photo }}"
@@ -9,7 +9,29 @@
         />
       </div>
       <div class="col">
-        {{ user.name }}
+        <h3>{{ user.name }}</h3>
+
+        <table class="table table-striped">
+          <tbody>
+            <tr>
+              <td>{{ user.reposNumber }}</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Jacob</td>
+              <td>Thornton</td>
+              <td>@fat</td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td>Larry</td>
+              <td>the Bird</td>
+              <td>@twitter</td>
+            </tr>
+          </tbody>
+        </table>
 
         {{ user.repos }}
         {{ user.followers }}
