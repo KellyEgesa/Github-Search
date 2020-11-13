@@ -1,5 +1,10 @@
 #userCard {
   width: 45rem;
+  box-shadow: 0 2px 4px 0 #c70039, 0 3px 10px 0 #900c3f;
+}
+#userCard:hover {
+  box-shadow: 0 6px 10px 0 #ffc300, 0 8px 22px 0 #ff5733;
+  cursor: pointer;
 }
 img {
   max-width: 100%;
