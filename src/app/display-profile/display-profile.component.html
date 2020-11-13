@@ -1,18 +1,21 @@
 <div class="container-fluid">
-  <div class="card" id="userCard">
+  <div class="card my-auto" id="userCard">
     <div class="row">
       <div class="col">
-        <img src="{{ user.photo }}" class="rounded float-left" alt="" />
+        <img
+          src="{{ user.photo }}"
+          class="rounded-circle border border-success"
+          alt=""
+        />
       </div>
-      <div class="col"></div>
-    </div>
-
-    <!-- {{ user.id }}
+      <div class="col">
         {{ user.name }}
-        {{ user.photo }}
+
         {{ user.repos }}
         {{ user.followers }}
         {{ user.following }}
-        {{ user.dateCreated }} -->
+        {{ user.dateCreated }}
+      </div>
+    </div>
   </div>
 </div>
