@@ -9,6 +9,7 @@ import { UserService } from '../user-service/user.service';
 })
 export class DisplayProfileComponent implements OnInit {
   user: User;
+
   constructor(private userservice: UserService) {}
 
   ngOnInit(): void {

@@ -46,7 +46,7 @@ export class UserService {
             this.user.followers = response.followers;
             this.user.reposNumber = response.public_repos;
             this.user.dateCreated = response.created_at;
-
+            this.getUserRepo(response.repos_url);
             resolve();
           },
           (err) => {
@@ -69,7 +69,7 @@ export class UserService {
         .then(
           (response) => {
             this.repos = response;
-            console.log(this.repos);
+
             resolve();
           },
           (err) => {
