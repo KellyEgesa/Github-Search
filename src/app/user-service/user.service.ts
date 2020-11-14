@@ -65,12 +65,12 @@ export class UserService {
       id: number;
       language: string;
       name: string;
-      url: string;
+      html_url: string;
       updated_at: Date;
     }
     const promise = new Promise((resolve, reject) => {
       this.http
-        .get<ApiResponse>(url)
+        .get<ApiResponse[]>(url)
         .toPromise()
         .then(
           (response) => {
