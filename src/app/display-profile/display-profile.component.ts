@@ -12,10 +12,16 @@ export class DisplayProfileComponent implements OnInit {
   user: User;
   repos;
 
+  getUser(search: any): void {
+    this.userservice.getGithubUser(search.parameters);
+    this.user = this.userservice.user;
+    this.repos = this.userservice.repos;
+  }
+
   constructor(private userservice: UserService) {}
 
   ngOnInit(): void {
-    this.userservice.getGithubUser();
+    this.userservice.getGithubUser('KellyEgesa');
     this.user = this.userservice.user;
     this.repos = this.userservice.repos;
   }

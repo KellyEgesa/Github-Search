@@ -15,7 +15,7 @@ export class UserService {
     this.user = new User(0, '', '', '', '', 0, 0, 0, new Date());
   }
 
-  getGithubUser() {
+  getGithubUser(user) {
     interface ApiResponse {
       id: number;
       login: string;
@@ -32,7 +32,9 @@ export class UserService {
       this.http
         .get<ApiResponse>(
           environment.apiUrl +
-            'users/KellyEgesa?access_token=' +
+            'users/' +
+            user +
+            '?access_token=' +
             environment.authToken
         )
         .toPromise()
@@ -75,6 +77,7 @@ export class UserService {
         .then(
           (response) => {
             const res = response;
+            this.repos.splice(0, this.repos.length);
             for (const item of res) {
               const data = new Repos(
                 item.description,
@@ -84,12 +87,12 @@ export class UserService {
                 item.html_url,
                 item.updated_at
               );
+
               this.repos.push(data);
             }
             resolve();
           },
           (err) => {
-            // this.user = 'error';
             reject(err);
           }
         );
