@@ -5,6 +5,6 @@ export class Repos {
     public language: string,
     public name: string,
     public url: string,
-    public updated_at: Date
+    public updatedAt: Date
   ) {}
 }

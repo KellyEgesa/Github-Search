@@ -2,13 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { User } from '../user';
+import { Repos } from '../repos';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
   user: User;
-  repos;
+  repos: Repos[] = [];
 
   constructor(public http: HttpClient) {
     this.user = new User(0, '', '', '', '', 0, 0, 0, new Date());
@@ -47,6 +48,7 @@ export class UserService {
             this.user.reposNumber = response.public_repos;
             this.user.dateCreated = response.created_at;
             this.getUserRepo(response.repos_url);
+            console.log(this.repos);
             resolve();
           },
           (err) => {
@@ -55,21 +57,28 @@ export class UserService {
           }
         );
     });
-    return promise;
   }
 
   getUserRepo(url) {
-    interface ApiResponse {
-      null;
-    }
+    interface ApiResponse {}
     const promise = new Promise((resolve, reject) => {
       this.http
         .get<ApiResponse>(url)
         .toPromise()
         .then(
           (response) => {
-            this.repos = response;
-
+            const res = response;
+            for (const item of res) {
+              const data = new Repos(
+                item.description,
+                item.id,
+                item.language,
+                item.name,
+                item.url,
+                item.updated_at
+              );
+              this.repos.push(data);
+            }
             resolve();
           },
           (err) => {
