@@ -6,11 +6,7 @@
   box-shadow: 0 6px 10px 0 #ffc300, 0 8px 22px 0 #ff5733;
   cursor: pointer;
 }
-#repoCard {
-  width: 20rem;
 
-  /* box-shadow: 0 2px 4px 0 #c70039, 0 3px 10px 0 #900c3f; */
-}
 img {
   max-width: 100%;
   height: auto;
