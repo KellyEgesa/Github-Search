@@ -1,4 +1,6 @@
 <div class="container-fluid">
+  <app-form></app-form>
+
   <div class="card mx-auto m-2" id="userCard">
     <div class="row p-2">
       <div class="col">
@@ -41,7 +43,7 @@
   <h4 class="text-center m-2 text-white font-weight-bold">REPOSITORIES:</h4>
   <div class="row">
     <div class="card m-2 mx-auto" id="repoCard" *ngFor="let repo of repos">
-      <div class="card-body">
+      <div class="card-body my-auto">
         <h5 class="card-title font-weight-bold">{{ repo.name }}</h5>
         <h6 class="card-subtitle mb-2 text-muted">{{ repo.description }}</h6>
         <p class="card-text">
