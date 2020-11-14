@@ -60,7 +60,14 @@ export class UserService {
   }
 
   getUserRepo(url) {
-    interface ApiResponse {}
+    interface ApiResponse {
+      description: string;
+      id: number;
+      language: string;
+      name: string;
+      url: string;
+      updated_at: Date;
+    }
     const promise = new Promise((resolve, reject) => {
       this.http
         .get<ApiResponse>(url)
@@ -74,7 +81,7 @@ export class UserService {
                 item.id,
                 item.language,
                 item.name,
-                item.url,
+                item.html_url,
                 item.updated_at
               );
               this.repos.push(data);
