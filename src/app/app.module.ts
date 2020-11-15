@@ -9,9 +9,10 @@ import { FormsModule } from '@angular/forms';
 import { FormComponent } from './form/form.component';
 import { RepositoriesComponent } from './repositories/repositories.component';
 import { DisplayRepositoriesComponent } from './display-repositories/display-repositories.component';
+import { DatePassedPipe } from './date-passed.pipe';
 
 @NgModule({
-  declarations: [AppComponent, DisplayProfileComponent, FormComponent, RepositoriesComponent, DisplayRepositoriesComponent],
+  declarations: [AppComponent, DisplayProfileComponent, FormComponent, RepositoriesComponent, DisplayRepositoriesComponent, DatePassedPipe],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],

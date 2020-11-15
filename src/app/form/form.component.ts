@@ -13,6 +13,7 @@ export class FormComponent implements OnInit {
 
   submitParameter(): void {
     this.searchString.emit(this.newSearch);
+    console.log(this.newSearch);
     this.newSearch = new Search('');
   }
 

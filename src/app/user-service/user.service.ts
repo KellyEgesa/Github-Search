@@ -63,6 +63,7 @@ export class UserService {
   }
 
   getUserRepo(url) {
+    this.repoSearch.splice(0, this.repoSearch.length);
     interface ApiResponse {
       description: string;
       id: number;
@@ -103,26 +104,21 @@ export class UserService {
 
   getRepos(parameters) {
     interface ApiResponse {
-      description: string;
-      id: number;
-      language: string;
-      name: string;
-      html_url: string;
-      updated_at: Date;
+      items: any;
     }
     const promise = new Promise((resolve, reject) => {
       this.http
-        .get<ApiResponse[]>(
+        .get<ApiResponse>(
           environment.apiUrl +
             'search/repositories?q=' +
             parameters +
-            '&per_page=5'
+            '&per_page=16'
         )
         .toPromise()
         .then(
           (response) => {
-            const res = response;
-            this.repos.splice(0, this.repos.length);
+            const res = response.items;
+            this.repoSearch.splice(0, this.repoSearch.length);
             for (const item of res) {
               const data = new Repos(
                 item.description,
@@ -132,10 +128,10 @@ export class UserService {
                 item.html_url,
                 item.updated_at
               );
-
               this.repoSearch.push(data);
             }
             resolve();
+            // this.load = this.load + 4;
           },
           (err) => {
             reject(err);
