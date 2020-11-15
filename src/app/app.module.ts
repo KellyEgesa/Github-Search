@@ -10,9 +10,10 @@ import { FormComponent } from './form/form.component';
 import { RepositoriesComponent } from './repositories/repositories.component';
 import { DisplayRepositoriesComponent } from './display-repositories/display-repositories.component';
 import { DatePassedPipe } from './date-passed.pipe';
+import { HighlightDirective } from './highlight.directive';
 
 @NgModule({
-  declarations: [AppComponent, DisplayProfileComponent, FormComponent, RepositoriesComponent, DisplayRepositoriesComponent, DatePassedPipe],
+  declarations: [AppComponent, DisplayProfileComponent, FormComponent, RepositoriesComponent, DisplayRepositoriesComponent, DatePassedPipe, HighlightDirective],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
