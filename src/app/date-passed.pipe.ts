@@ -13,8 +13,11 @@ export class DatePassedPipe implements PipeTransform {
     let hoursPassed = Math.floor(minutesPassed / 60);
     let secondsPassed = Math.floor(timepassed / 1000);
     let daysPassed = Math.floor((timepassed * 0.001) / 86400);
+    let yearsPassed = Math.floor(daysPassed / 364);
 
-    if (daysPassed > 1) {
+    if (yearsPassed >= 1) {
+      return 'Updated ' + yearsPassed + ' years ago';
+    } else if (daysPassed > 1) {
       return 'Updated ' + daysPassed + ' days ago';
     } else if (daysPassed <= 1 && hoursPassed > 1) {
       return 'Updated ' + hoursPassed + ' hours ago';
